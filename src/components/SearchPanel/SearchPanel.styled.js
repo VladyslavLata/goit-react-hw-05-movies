@@ -21,6 +21,7 @@ export const SearchButton = styled.button`
   min-width: 100px;
   border: ${p => p.theme.borders.none};
   border-radius: ${p => p.theme.radii.sm};
+  cursor: pointer;
 `;
 
 export const Form = styled.form`
