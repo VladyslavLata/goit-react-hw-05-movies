@@ -1,22 +1,40 @@
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Rating } from 'components/Rating/Rating';
+import * as SC from './GalleryMovies.styled';
 
 export const GalleryMovies = ({ movies }) => {
+  const location = useLocation();
+
   return (
-    <ul>
+    <SC.Gallery>
       {movies.map(({ id, poster_path, vote_average, title }) => (
-        <li key={id}>
-          <Link to={`movies/${id}`}>
-            <div>
-              <img
+        <SC.CardMovie key={id}>
+          <SC.LinkTo to={`/movies/${id}`} state={{ from: location }}>
+            <SC.ImgWrap>
+              <SC.Image
                 src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                 alt={title}
               />
-            </div>
-            <h2>{title}</h2>
-            <p>{vote_average}</p>
-          </Link>
-        </li>
+            </SC.ImgWrap>
+            <SC.FooterMovie>
+              <SC.Title>{title}</SC.Title>
+              <Rating rating={vote_average} />
+            </SC.FooterMovie>
+          </SC.LinkTo>
+        </SC.CardMovie>
       ))}
-    </ul>
+    </SC.Gallery>
   );
+};
+
+GalleryMovies.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+      vote_average: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };

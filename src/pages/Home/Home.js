@@ -1,37 +1,20 @@
-import { useState, useEffect } from 'react';
-import { ThreeDots } from 'react-loader-spinner';
+import { Loader } from 'components/Loader/Loader';
 import { getTrendingMovies } from 'Api/Api';
 import { GalleryMovies } from 'components/GalleryMovies/GalleryMovies';
-import { MessageError } from 'components/MessageError/MessageError';
+import { Message } from 'components/Message/Message';
+import { useGetArreyDataPage } from 'Hooks/useGetArreyDataPage';
 
 export const Home = () => {
-  const [movies, setMovies] = useState([]);
-  const [status, setStatus] = useState('idle');
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const getMovies = async () => {
-      setStatus('pending');
-      try {
-        const trendMovies = await getTrendingMovies();
-        setMovies([...trendMovies.results]);
-        setStatus('resolved');
-      } catch (error) {
-        setError(error);
-        setStatus('rejected');
-      }
-    };
-
-    getMovies();
-  }, []);
+  const [movies, status, error] = useGetArreyDataPage(
+    getTrendingMovies,
+    'results'
+  );
 
   if (status === 'pending') {
-    return (
-      <ThreeDots color="#3f51b5" wrapperStyle={{ justifyContent: 'center' }} />
-    );
+    return <Loader />;
   } else if (status === 'resolved' && movies.length > 0) {
     return <GalleryMovies movies={movies} />;
   } else if (status === 'rejected') {
-    return <MessageError message={error.message} />;
+    return <Message message={error.message} />;
   }
 };
