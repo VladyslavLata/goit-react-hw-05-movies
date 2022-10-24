@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import * as SC from './SearchPanel.styled';
 
 export const SearchPanel = ({ onSubmit }) => {
@@ -21,8 +20,4 @@ export const SearchPanel = ({ onSubmit }) => {
       <SC.SearchButton type="submit">Search</SC.SearchButton>
     </SC.Form>
   );
-};
-
-SearchPanel.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Box } from 'components/Box/Box';
 import { Rating } from 'components/Rating/Rating';
 import * as SC from './MovieDetailsBox.styled';
@@ -40,17 +39,4 @@ export const MovieDetailsBox = ({
       </Box>
     </Box>
   );
-};
-
-MovieDetailsBox.propTypes = {
-  title: PropTypes.string,
-  overview: PropTypes.string,
-  poster_path: PropTypes.string,
-  vote_average: PropTypes.number,
-  release_date: PropTypes.string,
-  genres: PropTypes.arrayOf(
-    PropTypes.exact({
-      name: PropTypes.string,
-    })
-  ),
 };

@@ -1,5 +1,5 @@
 import * as SC from './CastCard.styled';
-import PropTypes from 'prop-types';
+
 import img from '../../img/noUserProfile.webp';
 
 export const CastCard = ({ cast }) => {
@@ -18,14 +18,4 @@ export const CastCard = ({ cast }) => {
       <SC.ActorName>{name}</SC.ActorName>
     </SC.CastCard>
   ));
-};
-
-CastCard.propTypes = {
-  cast: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      profile_path: PropTypes.string,
-      credit_id: PropTypes.string.isRequired,
-    })
-  ),
 };

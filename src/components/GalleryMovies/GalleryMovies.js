@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
 import { Rating } from 'components/Rating/Rating';
 import * as SC from './GalleryMovies.styled';
 
@@ -26,15 +26,4 @@ export const GalleryMovies = ({ movies }) => {
       ))}
     </SC.Gallery>
   );
-};
-
-GalleryMovies.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      poster_path: PropTypes.string,
-      vote_average: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-    })
-  ).isRequired,
 };

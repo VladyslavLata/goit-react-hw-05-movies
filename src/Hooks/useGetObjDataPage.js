@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 export const useGetObjDataPage = (getDataMovie, movieParam) => {
   const [data, setData] = useState({});
@@ -24,9 +23,4 @@ export const useGetObjDataPage = (getDataMovie, movieParam) => {
   }, [getDataMovie, movieParam]);
 
   return [data, status, error, setData, setStatus, setError];
-};
-
-useGetObjDataPage.propTypes = {
-  getDataMovie: PropTypes.func.isRequired,
-  movieParam: PropTypes.any.isRequired,
 };

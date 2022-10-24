@@ -1,4 +1,3 @@
-// import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'Api/Api';
 import { Message } from 'components/Message/Message';
