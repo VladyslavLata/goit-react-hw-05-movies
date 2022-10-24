@@ -1,3 +1,5 @@
+import { IMovies, IMovieDetails, IMovieActors, IMovieReviews } from 'types/types';
+
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -11,25 +13,25 @@ const params = {
 
 export const getTrendingMovies = async () => {
   const response = await axios.get('/trending/movie/day', params);
-  return response.data;
+  return response.data as IMovies ;
 };
 
-export const getMovieDetails = async movieId => {
+export const getMovieDetails = async (movieId:number) => {
   const response = await axios.get(`/movie/${movieId}`, params);
-  return response.data;
+  return response.data as IMovieDetails;
 };
 
-export const getCast = async movieId => {
+export const getCast = async (movieId:number) => {
   const response = await axios.get(`/movie/${movieId}/credits`, params);
-  return response.data;
+  return response.data as IMovieActors;
 };
 
-export const getReviews = async movieId => {
+export const getReviews = async (movieId:number) => {
   const response = await axios.get(`/movie/${movieId}/reviews`, params);
-  return response.data;
+  return response.data as IMovieReviews;
 };
 
-export const getMovies = async movie => {
+export const getMovies = async (movie:string) => {
   const params = {
     params: {
       api_key: API_KEY,
@@ -38,5 +40,5 @@ export const getMovies = async movie => {
   };
 
   const response = await axios.get(`/search/movie`, params);
-  return response.data;
+  return response.data as IMovies;
 };
