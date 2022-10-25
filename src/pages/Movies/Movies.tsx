@@ -32,7 +32,7 @@ const Movies = () => {
       {status === 'resolved' && movies.length < 1 && (
         <Message message={noMoviesMessage} />
       )}
-      {status === 'rejected' && <Message message={error.message} />}
+      {status === 'rejected' && <Message message={error} />}
     </>
   );
 };

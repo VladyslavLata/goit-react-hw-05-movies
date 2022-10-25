@@ -16,17 +16,17 @@ export const getTrendingMovies = async () => {
   return response.data as IMovies ;
 };
 
-export const getMovieDetails = async (movieId:number) => {
+export const getMovieDetails = async (movieId:string) => {
   const response = await axios.get(`/movie/${movieId}`, params);
   return response.data as IMovieDetails;
 };
 
-export const getCast = async (movieId:number) => {
+export const getCast = async (movieId:string) => {
   const response = await axios.get(`/movie/${movieId}/credits`, params);
   return response.data as IMovieActors;
 };
 
-export const getReviews = async (movieId:number) => {
+export const getReviews = async (movieId:string) => {
   const response = await axios.get(`/movie/${movieId}/reviews`, params);
   return response.data as IMovieReviews;
 };

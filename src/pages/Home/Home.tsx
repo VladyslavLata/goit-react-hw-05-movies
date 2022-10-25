@@ -15,6 +15,6 @@ export const Home = () => {
   } else if (status === 'resolved' && movies.length > 0) {
     return <GalleryMovies movies={movies} />;
   } else if (status === 'rejected') {
-    return <Message message={error.message} />;
+    return <Message message={error} />;
   }
 };
