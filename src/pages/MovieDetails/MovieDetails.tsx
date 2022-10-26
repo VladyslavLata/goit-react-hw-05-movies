@@ -8,7 +8,6 @@ import { AdditionMoviInformation } from 'components/AdditionMoviInformation/Addi
 import { ButtonBack } from 'components/ButtonBack/ButtonBack';
 import { useGetObjDataPage } from 'Hooks/useGetObjDataPage';
 import { Box } from 'components/Box/Box';
-// import { IMovieDetails } from 'types/types';
 
 const MovieDetails = () => {
   const { movieId } = useParams<{ movieId: string }>();
