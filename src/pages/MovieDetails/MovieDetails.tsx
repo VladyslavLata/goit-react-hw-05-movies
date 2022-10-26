@@ -8,15 +8,18 @@ import { AdditionMoviInformation } from 'components/AdditionMoviInformation/Addi
 import { ButtonBack } from 'components/ButtonBack/ButtonBack';
 import { useGetObjDataPage } from 'Hooks/useGetObjDataPage';
 import { Box } from 'components/Box/Box';
+// import { IMovieDetails } from 'types/types';
 
 const MovieDetails = () => {
-  const { movieId } = useParams();
-  const location = useLocation();
+  const { movieId } = useParams<{ movieId: string }>();
   const [movieDetails, status, error] = useGetObjDataPage(
     getMovieDetails,
     movieId
   );
-  const backLink = useRef(location.state?.from ?? '/');
+  const location = useLocation();
+  const state = location.state as { from: Location }
+  const backLink = useRef<Location | string>(state.from ?? '/');
+  // const backLink = useRef(location.state?.from ?? '/');
   return (
     <>
       {status === 'pending' && <Loader />}
@@ -30,7 +33,7 @@ const MovieDetails = () => {
           </Suspense>
         </Box>
       )}
-      {status === 'rejected' && <Message message={error.message} />}
+      {status === 'rejected' && <Message message={error} />}
     </>
   );
 };

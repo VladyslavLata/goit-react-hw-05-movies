@@ -1,8 +1,10 @@
+import React from 'react';
 import { Box } from 'components/Box/Box';
 import { Rating } from 'components/Rating/Rating';
 import * as SC from './MovieDetailsBox.styled';
+import { IMovieDetails } from 'types/types';
 
-export const MovieDetailsBox = ({
+export const MovieDetailsBox: React.FC<{ movie: IMovieDetails }> = ({
   movie: { title, overview, genres, poster_path, vote_average, release_date },
 }) => {
   return (
