@@ -9,7 +9,7 @@ export const RatingMovie = styled.p`
   font-weight: ${p => p.theme.fontWeights.medium};
   border-radius: ${p => p.theme.radii.round};
   background-color: ${({ rating, theme }) => {
-    if (rating > 7) {
+    if (rating >= 7) {
       return theme.colors.green;
     } else if (rating < 5) {
       return theme.colors.red;

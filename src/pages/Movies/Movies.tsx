@@ -11,14 +11,14 @@ const Movies = () => {
   const paramMovie = searchParams.get('movie') ?? '';
   const [movies, status, error] = useGetArreyDataPage(
     getMovies,
-    'results',
+    // 'results',
     paramMovie
   );
 
   const noMoviesMessage = `There are no movies matching your search "${paramMovie}".`;
 
-  const updateQueryString = movie => {
-    const nextMovie = movie !== '' ? { movie } : {};
+  const updateQueryString = (movie:string) => {
+    const nextMovie: {movie?: string} = movie !== '' ? { movie } : {};
     setSearchParams(nextMovie);
   };
 

@@ -6,10 +6,10 @@ import { Message } from 'components/Message/Message';
 import { Loader } from 'components/Loader/Loader';
 import { useGetArreyDataPage } from 'Hooks/useGetArreyDataPage';
 import { Box } from 'components/Box/Box';
-import { IMovieActors, ICrew } from 'types/types';
+// import { IMovieActors, ICrew } from 'types/types';
 
 const Cast = () => {
-  const { movieId } = useParams<{movieId: string}>();
+  const { movieId } = useParams();
   const [cast, status, error] = useGetArreyDataPage(getCast,
     // 'cast',
     movieId);

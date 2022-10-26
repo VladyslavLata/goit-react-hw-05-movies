@@ -11,7 +11,7 @@ const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, status, error] = useGetArreyDataPage(
     getReviews,
-    'results',
+    // 'results',
     movieId
   );
 
@@ -28,7 +28,7 @@ const Reviews = () => {
       {status === 'resolved' && reviews.length < 1 && (
         <Message message={noReviewsMessage} />
       )}
-      {status === 'rejected' && <Message message={error.message} />}
+      {status === 'rejected' && <Message message={error} />}
     </>
   );
 };

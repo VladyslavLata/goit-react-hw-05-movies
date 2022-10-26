@@ -21,17 +21,17 @@ export const getMovieDetails = async (movieId:string) => {
   return response.data as IMovieDetails;
 };
 
-export const getCast = async (movieId:string) => {
+export const getCast = async (movieId:string|undefined) => {
   const response = await axios.get(`/movie/${movieId}/credits`, params);
   return response.data as IMovieActors;
 };
 
-export const getReviews = async (movieId:string) => {
+export const getReviews = async (movieId:string|undefined) => {
   const response = await axios.get(`/movie/${movieId}/reviews`, params);
   return response.data as IMovieReviews;
 };
 
-export const getMovies = async (movie:string) => {
+export const getMovies = async (movie:string|undefined) => {
   const params = {
     params: {
       api_key: API_KEY,

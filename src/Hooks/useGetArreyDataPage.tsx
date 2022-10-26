@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react';
-import { IMovies, IMovie, ICrew, IMovieActors } from 'types/types';
+import {
+  IMovies,
+  IMovie,
+  ICrew,
+  IMovieActors,
+  IMovieReviews,
+  IReview,
+} from 'types/types';
 
 export const useGetArreyDataPage = (
-  getDataMovie: (param?: string) => IMovies | IMovieActors,
+  getDataMovie: (
+    param?: string
+  ) => Promise<IMovies> | Promise<IMovieActors> | Promise<IMovieReviews>,
   // dataMovieProp: 'results' | 'crew',
   movieParam?: string
 ) => {
-  const [data , setData] = useState<IMovie[] | ICrew[]>([]);
+  const [data, setData] = useState<IMovie[] | ICrew[] | IReview[]>([]);
   const [status, setStatus] = useState<
     'idle' | 'pending' | 'resolved' | 'rejected'
   >('idle');
@@ -23,13 +32,16 @@ export const useGetArreyDataPage = (
           const response = await getDataMovie(movieParam);
           if ('crew' in response) {
             setData([...response.crew]);
-          }
-          if ('results' in response) {
+          } else if ('results' in response && 'id' in response) {
+            setData([...response.results]);
+          } else {
             setData([...response.results]);
           }
         } else if (typeof movieParam === 'undefined') {
           const response = await getDataMovie();
-          if ('results' in response) {
+          if ('results' in response && 'id' in response) {
+            setData([...response.results]);
+          } else if ('results' in response) {
             setData([...response.results]);
           }
         }

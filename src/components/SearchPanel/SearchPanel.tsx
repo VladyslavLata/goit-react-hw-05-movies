@@ -1,7 +1,20 @@
+import React from "react";
 import * as SC from './SearchPanel.styled';
 
-export const SearchPanel = ({ onSubmit }) => {
-  const handleSubmit = e => {
+interface IProps {
+  onSubmit: (movie: string) => void;
+}
+
+interface FormElements extends HTMLFormControlsCollection {
+    movie: HTMLInputElement
+}
+
+interface InputMovieElement extends HTMLFormElement {
+   readonly elements: FormElements
+}
+
+export const SearchPanel: React.FC<IProps> = ({onSubmit}) => {
+  const handleSubmit = (e: React.FormEvent<InputMovieElement> ) => {
     e.preventDefault();
     onSubmit(e.currentTarget.elements.movie.value);
     e.currentTarget.reset();
