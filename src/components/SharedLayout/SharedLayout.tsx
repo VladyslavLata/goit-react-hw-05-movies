@@ -1,10 +1,11 @@
+import React from "react";
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Box } from 'components/Box/Box';
 import { ButtonLink } from 'components/ButtonLink/ButtonLink';
 import { Loader } from 'components/Loader/Loader';
 
-export const SharedLayout = () => {
+export const SharedLayout: React.FC = () => {
   return (
     <>
       <Box as="header" py={4} px={5} bg="bgPrimary">

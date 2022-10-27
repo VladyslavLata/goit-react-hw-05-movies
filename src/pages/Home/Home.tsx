@@ -4,6 +4,7 @@ import { getTrendingMovies } from 'Api/Api';
 import { GalleryMovies } from 'components/GalleryMovies/GalleryMovies';
 import { Message } from 'components/Message/Message';
 import { useGetArreyDataPage } from 'Hooks/useGetArreyDataPage';
+import { IMovie } from 'types/types';
 
 export const Home = () => {
   const [movies, status, error] = useGetArreyDataPage(
@@ -15,7 +16,7 @@ export const Home = () => {
     <>
       {status === 'pending' && <Loader />}
       {status === 'resolved' && movies.length > 0 && (
-        <GalleryMovies movies={movies} />
+        <GalleryMovies movies={movies as IMovie[]} />
       )}
       {status === 'rejected' && <Message message={error} />}
     </>

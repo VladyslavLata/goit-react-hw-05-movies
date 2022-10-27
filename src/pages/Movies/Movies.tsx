@@ -5,6 +5,7 @@ import { Message } from 'components/Message/Message';
 import { GalleryMovies } from 'components/GalleryMovies/GalleryMovies';
 import { SearchPanel } from '../../components/SearchPanel/SearchPanel';
 import { useGetArreyDataPage } from 'Hooks/useGetArreyDataPage';
+import { IMovie } from 'types/types';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,7 +28,7 @@ const Movies = () => {
       <SearchPanel onSubmit={updateQueryString} />
       {status === 'pending' && <Loader />}
       {status === 'resolved' && movies.length > 0 && (
-        <GalleryMovies movies={movies} />
+        <GalleryMovies movies={movies as IMovie[]} />
       )}
       {status === 'resolved' && movies.length < 1 && (
         <Message message={noMoviesMessage} />

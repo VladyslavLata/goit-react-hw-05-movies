@@ -8,24 +8,26 @@ import { AdditionMoviInformation } from 'components/AdditionMoviInformation/Addi
 import { ButtonBack } from 'components/ButtonBack/ButtonBack';
 import { useGetObjDataPage } from 'Hooks/useGetObjDataPage';
 import { Box } from 'components/Box/Box';
+import { IMovieDetails } from 'types/types';
 
 const MovieDetails = () => {
   const { movieId } = useParams<{ movieId: string }>();
+  const location = useLocation();
   const [movieDetails, status, error] = useGetObjDataPage(
     getMovieDetails,
     movieId
   );
-  const location = useLocation();
-  const state = location.state as { from: Location }
-  const backLink = useRef<Location | string>(state.from ?? '/');
-  // const backLink = useRef(location.state?.from ?? '/');
+  
+  const state = location.state as ({ from: Location } | null);
+  const backLink = useRef<Location | string>(state?.from ?? '/');
+  
   return (
     <>
       {status === 'pending' && <Loader />}
       {status === 'resolved' && (
         <Box as="section" py={4}>
           <ButtonBack to={backLink.current} />
-          <MovieDetailsBox movie={movieDetails} />
+          <MovieDetailsBox movie={movieDetails as IMovieDetails} />
           <AdditionMoviInformation />
           <Suspense fallback={<Loader />}>
             <Outlet />

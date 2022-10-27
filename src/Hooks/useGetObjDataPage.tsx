@@ -5,7 +5,7 @@ export const useGetObjDataPage = (
   getDataMovie: (id: string) => Promise<IMovieDetails>,
   movieParam: string | undefined
 ) => {
-  const [data, setData] = useState<IMovieDetails>({});
+  const [data, setData] = useState<IMovieDetails | null>(null);
   const [status, setStatus] = useState<
     'idle' | 'pending' | 'resolved' | 'rejected'
   >('idle');
