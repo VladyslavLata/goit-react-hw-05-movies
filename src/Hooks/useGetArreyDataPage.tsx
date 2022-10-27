@@ -12,7 +12,6 @@ export const useGetArreyDataPage = (
   getDataMovie: (
     param?: string
   ) => Promise<IMovies> | Promise<IMovieActors> | Promise<IMovieReviews>,
-  // dataMovieProp: 'results' | 'crew',
   movieParam?: string
 ) => {
   const [data, setData] = useState<IMovie[] | ICrew[] | IReview[]>([]);
@@ -49,13 +48,6 @@ export const useGetArreyDataPage = (
 
         setStatus('resolved');
       } catch (error) {
-        //  const response = await getDataMovie(movieParam);
-        // if ('results' in response) {
-        //   setData([...response.results]);
-        // } else if ('crew' in response)
-        // { setData([...response.crew]) };
-        // setStatus('resolved');
-
         if (error instanceof Error) {
           setError(error.message);
           setStatus('rejected');
@@ -67,7 +59,6 @@ export const useGetArreyDataPage = (
   }, [
     getDataMovie,
     movieParam,
-    // dataMovieProp
   ]);
 
   return [data, status, error, setData, setStatus, setError];

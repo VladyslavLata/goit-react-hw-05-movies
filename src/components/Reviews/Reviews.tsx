@@ -12,7 +12,6 @@ const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, status, error] = useGetArreyDataPage(
     getReviews,
-    // 'results',
     movieId
   );
 

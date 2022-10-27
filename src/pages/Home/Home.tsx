@@ -9,7 +9,6 @@ import { IMovie } from 'types/types';
 export const Home = () => {
   const [movies, status, error] = useGetArreyDataPage(
     getTrendingMovies
-    // 'results'
   );
 
   return (
@@ -22,11 +21,4 @@ export const Home = () => {
     </>
   );
 
-  // if (status === 'pending') {
-  //   return <Loader />;
-  // } else if (status === 'resolved' && movies.length > 0) {
-  //   return <GalleryMovies movies={movies} />;
-  // } else if (status === 'rejected') {
-  //   return <Message message={error} />;
-  // }
 };

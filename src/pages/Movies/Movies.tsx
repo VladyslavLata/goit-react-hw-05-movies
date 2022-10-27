@@ -12,7 +12,6 @@ const Movies = () => {
   const paramMovie = searchParams.get('movie') ?? '';
   const [movies, status, error] = useGetArreyDataPage(
     getMovies,
-    // 'results',
     paramMovie
   );
 

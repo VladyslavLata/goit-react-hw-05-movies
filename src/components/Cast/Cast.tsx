@@ -11,7 +11,6 @@ import {  ICrew } from 'types/types';
 const Cast = () => {
   const { movieId } = useParams();
   const [cast, status, error] = useGetArreyDataPage(getCast,
-    // 'cast',
     movieId);
 
   return (
