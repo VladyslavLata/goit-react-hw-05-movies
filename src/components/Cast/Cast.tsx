@@ -24,7 +24,7 @@ const Cast = () => {
           </Box>
         </section>
       )}
-      {status === 'rejected' && <Message message={error} />}
+      {status === 'rejected' && <Message message={error as string} />}
     </>
   );
 };

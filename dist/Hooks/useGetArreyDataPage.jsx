@@ -30,7 +30,7 @@ const useGetArreyDataPage = (getDataMovie, movieParam) => {
                     else if ('results' in response && 'id' in response) {
                         setData([...response.results]);
                     }
-                    else {
+                    else if ('results' in response && !('id' in response)) {
                         setData([...response.results]);
                     }
                 }

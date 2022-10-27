@@ -34,7 +34,7 @@ const MovieDetails = () => {
           </Suspense>
         </Box>
       )}
-      {status === 'rejected' && <Message message={error} />}
+      {status === 'rejected' && <Message message={error as string} />}
     </>
   );
 };

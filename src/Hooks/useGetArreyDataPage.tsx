@@ -34,14 +34,15 @@ export const useGetArreyDataPage = (
             setData([...response.crew]);
           } else if ('results' in response && 'id' in response) {
             setData([...response.results]);
-          } else {
+          } else if ('results' in response && !('id' in response)){
             setData([...response.results]);
           }
         } else if (typeof movieParam === 'undefined') {
           const response = await getDataMovie();
           if ('results' in response && 'id' in response) {
             setData([...response.results]);
-          } else if ('results' in response) {
+        } else
+          if ('results' in response) {
             setData([...response.results]);
           }
         }

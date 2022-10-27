@@ -18,7 +18,7 @@ export const Home = () => {
       {status === 'resolved' && movies.length > 0 && (
         <GalleryMovies movies={movies as IMovie[]} />
       )}
-      {status === 'rejected' && <Message message={error} />}
+      {status === 'rejected' && <Message message={error as string} />}
     </>
   );
 

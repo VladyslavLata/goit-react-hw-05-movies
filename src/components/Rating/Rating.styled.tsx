@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const RatingMovie = styled.p`
+interface IRatingColor {
+  rating: number,
+}
+
+export const RatingMovie = styled.p<IRatingColor>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
